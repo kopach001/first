@@ -12,6 +12,10 @@ def mask_account_card(account_card: str) ->str:
         name_operator = account_card[:-16]
         return f'{name_operator} {mask_card}'
 
+def get_date(format_date: str) -> str:
+    """Функция изменения формата даты"""
+    correct_date = format_date[8:11] + "." + format_date[5:7] + "." + format_date[:4]
+    return correct_date
 
 if __name__ == "__main__":
     print(mask_account_card("Visa Platinum 7000792289606361"))
