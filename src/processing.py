@@ -4,8 +4,9 @@ from typing import Any
 def filter_by_state(data: list[dict[str, Any]], user_state: str) -> list[dict[Any, Any]]:
     """Функция, которая фильтрует список словарей по указанному ключу"""
     sorted_list = []
-    x for x in data if x.get("state", '') == user_state:
-        sorted_list.append(x)
+    for i in data:
+        if i.get("state", "") == user_state:
+            sorted_list.append(i)
     return sorted_list
 
 
