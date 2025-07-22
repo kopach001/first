@@ -5,8 +5,8 @@ from typing import Any, Dict, List
 def filter_by_state(data: list[dict[str, Any]], state: str = "EXECUTED") -> list[dict[Any, Any]]:
     """Функция, которая фильтрует список словарей по указанному ключу"""
     sorted_list = []
-    for i in data:
-        if i.get("state", "") == state:
+    for key_state in data:
+        if key_state.get("state", "") == state:
             sorted_list.append(i)
     return sorted_list
 
