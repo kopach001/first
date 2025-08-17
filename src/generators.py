@@ -11,14 +11,14 @@ def filter_by_currency(transactions, currency):
 
 
 def transaction_descriptions(transactions):
-    """ Возвращает описание транзакции """
+    """Возвращает описание транзакции"""
     for transaction in transactions:
         yield transaction["description"]
 
 
 def card_number_generator(start: int, end: int) -> Generator[str]:
-    """ Генератор, выдает номера банковских карт в формате ХХХХ ХХХХ ХХХХ ХХХХ """
+    """Генератор, выдает номера банковских карт в формате ХХХХ ХХХХ ХХХХ ХХХХ"""
     for number in range(start, end + 1):
         card_number = f"{number:016d}"
-        format_number = " ".join([card_number[i: i + 4] for i in range(0, 16, 4)])
+        format_number = " ".join([card_number[i : i + 4] for i in range(0, 16, 4)])
         yield format_number
