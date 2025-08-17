@@ -1,8 +1,5 @@
-from turtledemo.penrose import start
-
 from data.transaction_data import transactions
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
-from src.main import result
 
 
 def test_filter_by_currency_correct_filtering() -> None:
