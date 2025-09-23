@@ -1,5 +1,6 @@
 import pytest
-from src.decorators import log, write_log, my_function, check_that_agr_is, predicate_is_int
+from src.decorators import log, my_function
+import os
 
 
 def test_log_errors(capsys):
@@ -10,13 +11,11 @@ def test_log_errors(capsys):
 
     with pytest.raises(TypeError):
         foo(1, "2")
-    messag = capsys.readouterr()
-    assert "".join(messag.out.split("-->")[-2:]) == " TypeError:  (1, '2'), {}\n"
-
+    message = capsys.readouterr()
+    assert "".join(message.out.split("-->")[-2:]) == " TypeError:  (1, '2'), {}\n"
 
 
 def test_log_file_errors():
-
     @log(filename="log.txt")
     def my_function(x, y):
         return x + y
@@ -24,10 +23,28 @@ def test_log_file_errors():
     my_function(1, 2)
     with open("log.txt", "r", encoding="utf-8") as f:
         all_lines = f.readlines()
-        messag = all_lines[-1]
-    assert "".join(messag.split("-->")[-2:]) == " my_function  OK\n"
+        message = all_lines[-1]
+    assert "".join(message.split("-->")[-2:]) == " my_function  OK\n"
 
 
+def test_log_invalid_file() -> None:
+    filename = "log.txt"
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(current_dir, "..", "data")
+    file_path = os.path.join(data_dir, filename)
 
-def test_my_function():
+    @log(filename)
+    def func_error1(x: int, y: int) -> int:
+        raise TypeError
+
+    with pytest.raises(TypeError):
+        func_error1(10, 20)
+
+    with open(file_path, mode="r") as file:
+        data = file.read()
+
+    assert "func_error1 error: <class 'TypeError'>. Inputs: (10, 20), {}\n" in data
+
+
+def test_my_function() -> None:
     assert my_function(2, 5) == 7

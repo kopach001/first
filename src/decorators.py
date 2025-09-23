@@ -3,21 +3,21 @@ from functools import wraps
 
 
 def log(filename=None):
-    """Формирование текст об успешном выполнении функции и возникшие ошибки"""
+    """Формирование текста об успешном выполнении функции или возникновение ошибки"""
 
     def decorator(func):
-        @wraps(func)  # Сохраняем метаданные оригинальной функции
+        @wraps(func)  # Сохраняем данные оригинальной функции
         def wrapper(*args, **kwargs):
             # Получаем текущую дату и время
-            data_now = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
+            date_now = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
             try:
                 result = func(*args, **kwargs)
-                log_messeng = f"{data_now} --> {func.__name__} --> OK"
-                write_log(log_messeng, filename)
+                log_message = f"{date_now} --> {func.__name__} --> OK"
+                write_log(log_message, filename)
                 return result
             except Exception as error:
-                error_masseng = f"{data_now} --> {type(error).__name__}: --> {args}, {kwargs}"
-                write_log(error_masseng, filename)
+                error_message = f"{date_now} --> {type(error).__name__}: --> {args}, {kwargs}"
+                write_log(error_message, filename)
                 raise error
 
         return wrapper
@@ -25,13 +25,17 @@ def log(filename=None):
     return decorator
 
 
-def write_log(messeng, filename):
+def write_log(message, filename):
     """Записывает сообщение в файл или выводит его в консоль"""
     if filename:
-        with open(filename, "a", encoding="utf-8") as file:
-            file.write(f"{messeng}\n")
+        with open(
+            filename,
+            "a",
+            encoding="utf-8",
+        ) as file:
+            file.write(f"{message}\n")
     else:
-        print(messeng)
+        print(message)
 
 
 def check_that_agr_is(predicate, error_message):
