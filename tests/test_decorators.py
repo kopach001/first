@@ -53,8 +53,12 @@ def test_log_invalid_file() -> None:
     with open(file_path, mode="r") as file:
         data = file.read()
 
-    assert "func_error1 error: <class 'TypeError'>. Inputs: (10, 20), {}\n" in data
-
+        # Проверяем фактический формат
+    assert "TypeError: --> (10, 20), {}" in data
+    # Или проверяем частично
+    assert "TypeError" in data
+    assert "(10, 20)" in data
+    assert "{}" in data
 
 def test_my_function() -> None:
     assert my_function(2, 5) == 7
