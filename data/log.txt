@@ -2,3 +2,4 @@ start='16:57:24' stop='16:57:24' my_test_function ok
 start='16:57:24' stop='16:57:24' func_error1 error: <class 'TypeError'>. Inputs: (10, 20), {}
 start='22:35:38' stop='22:35:38' my_test_function ok
 start='22:35:38' stop='22:35:38' func_error1 error: <class 'TypeError'>. Inputs: (10, 20), {}
+30.09.2025 21:48:15 --> TypeError: --> (10, 20), {}

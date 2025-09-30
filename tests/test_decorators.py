@@ -33,12 +33,22 @@ def test_log_invalid_file() -> None:
     data_dir = os.path.join(current_dir, "..", "data")
     file_path = os.path.join(data_dir, filename)
 
-    @log(filename)
-    def func_error1(x: int, y: int) -> int:
-        raise TypeError
+    # Сохраняем текущую директорию
+    original_cwd = os.getcwd()
 
-    with pytest.raises(TypeError):
-        func_error1(10, 20)
+    try:
+        # Меняем рабочую директорию на data_dir
+        os.chdir(data_dir)
+
+        @log(filename)
+        def func_error1(x: int, y: int) -> int:
+            raise TypeError
+
+        with pytest.raises(TypeError):
+            func_error1(10, 20)
+    finally:
+        # Возвращаем обратно
+        os.chdir(original_cwd)
 
     with open(file_path, mode="r") as file:
         data = file.read()
