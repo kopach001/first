@@ -60,5 +60,6 @@ def test_log_invalid_file() -> None:
     assert "(10, 20)" in data
     assert "{}" in data
 
+
 def test_my_function() -> None:
     assert my_function(2, 5) == 7

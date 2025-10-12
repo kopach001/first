@@ -79,3 +79,12 @@ HTML-отчёт формируется в `htmlcov/index.html` командой:
 
 ```
 pytest --cov=src --cov-report=html
+
+## Конфигурация
+Для корректной работы конвертации валют необходимо задать API ключ внешнего сервиса.
+
+Создайте файл .env на основе шаблона .env.example и укажите в нём ваш API ключ:
+```ini
+# Укажите реальный apikey для вызова api.apilayer.com/exchangerates_data/convert
+API_KEY=SomeAPIKey
+```
