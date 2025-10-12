@@ -337,6 +337,21 @@ pygments = ">=2.7.2"
 dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "requests", "setuptools", "xmlschema"]
 
 [[package]]
+name = "python-dotenv"
+version = "1.1.1"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "python_dotenv-1.1.1-py3-none-any.whl", hash = "sha256:31f23644fe2602f88ff55e1f5c79ba497e01224ee7737937930c448e4d0e24dc"},
+    {file = "python_dotenv-1.1.1.tar.gz", hash = "sha256:a8a6399716257f45be6a007360200409fce5cda2661e3dec71d23dc15f6189ab"},
+]
+
+[package.extras]
+cli = ["click (>=5.0)"]
+
+[[package]]
 name = "typing-extensions"
 version = "4.14.0"
 description = "Backported and Experimental Type Hints for Python 3.9+"
@@ -348,7 +363,18 @@ files = [
     {file = "typing_extensions-4.14.0.tar.gz", hash = "sha256:8676b788e32f02ab42d9e7c61324048ae4c6d844a399eebace3d4979d75ceef4"},
 ]
 
+[[package]]
+name = "utils"
+version = "1.0.2"
+description = "A grab-bag of utility functions and objects"
+optional = false
+python-versions = ">=3.6"
+groups = ["main"]
+files = [
+    {file = "utils-1.0.2.tar.gz", hash = "sha256:f4d5157e27e9d434006b5b52a1ec951a34e53e7ecaa145d43a153ec452eb5d9e"},
+]
+
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13"
-content-hash = "56b7843e551fa88fc734d6d4af6f6bfaa2e115f159dde4e4024c4f54b2acf405"
+content-hash = "39df7f0212ee1c77d95d65313c0d7bd7583577d0731c9e04cde23fee2c2b6cab"
