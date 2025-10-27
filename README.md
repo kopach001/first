@@ -86,5 +86,5 @@ pytest --cov=src --cov-report=html
 Создайте файл .env на основе шаблона .env.example и укажите в нём ваш API ключ:
 ```ini
 # Укажите реальный apikey для вызова api.apilayer.com/exchangerates_data/convert
-API_KEY=SomeAPIKey    
+API_KEY=SomeAPIKey     
 ```
