@@ -3,8 +3,8 @@ import os
 import logging
 
 # Создание папки logs, если она не существует
-if not os.path.exists('logs'):
-    os.makedirs('logs')
+if not os.path.exists("logs"):
+    os.makedirs("logs")
 
 # Настройка логирования
 logger = logging.getLogger("utils")
@@ -19,7 +19,6 @@ file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(m
 file_handler.setFormatter(file_formatter)
 
 logger.addHandler(file_handler)
-
 
 
 def load_transactions(file_path):
